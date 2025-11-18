@@ -13,6 +13,16 @@
 }
 
 .benefit-card .icon {
-  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin-bottom: 10px;
+  height: 64px;
+}
+
+.benefit-icon {
+  display: block;
+  width: 48px;
+  height: 48px;
+  color: inherit;
 }
