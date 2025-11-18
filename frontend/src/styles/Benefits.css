@@ -1,0 +1,18 @@
+.benefits-section {
+  padding: 50px 20px;
+  background: #f2f2f2;
+}
+
+.benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 25px;
+  text-align: center;
+  max-width: 1100px;
+  margin: auto;
+}
+
+.benefit-card .icon {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
