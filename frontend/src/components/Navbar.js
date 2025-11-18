@@ -23,7 +23,7 @@ export default function Navbar() {
 
           <div className="navbar-nav">
             <Link to="/catalogo" className="navbar-link">Catálogo</Link>
-            <Link to="/autos" className="navbar-link">Autos</Link>
+            <Link to="/autoss" className="navbar-link">Autos</Link>
             <Link to="/motos" className="navbar-link">Motos</Link>
             <Link to="/ofertas" className="navbar-link">Ofertas</Link>
           </div>
