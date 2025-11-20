@@ -26,8 +26,8 @@ export default function Footer() {
             </p>
 
             <div className="footer-social">
-              <a href="#" className="footer-social-link"><Facebook /></a>
-              <a href="#" className="footer-social-link"><Instagram /></a>
+              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="footer-social-link"><Facebook /></a>
+              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="footer-social-link"><Instagram /></a>
             </div>
           </div>
 
@@ -35,10 +35,10 @@ export default function Footer() {
           <div className="footer-section">
             <h3 className="footer-section-title">Productos</h3>
             <ul className="footer-section-list">
-              <li><a className="footer-section-link" href="#">Repuestos Autos</a></li>
-              <li><a className="footer-section-link" href="#">Repuestos Motos</a></li>
-              <li><a className="footer-section-link" href="#">Catálogo</a></li>
-              <li><a className="footer-section-link" href="#">Ofertas</a></li>
+              <li><Link className="footer-section-link" to="/productos/autos">Repuestos Autos</Link></li>
+              <li><Link className="footer-section-link" to="/productos/motos">Repuestos Motos</Link></li>
+              <li><Link className="footer-section-link" to="/catalogo">Catálogo</Link></li>
+              <li><Link className="footer-section-link" to="/ofertas">Ofertas</Link></li>
             </ul>
           </div>
 
@@ -46,9 +46,9 @@ export default function Footer() {
           <div className="footer-section">
             <h3 className="footer-section-title">Empresa</h3>
             <ul className="footer-section-list">
-              <li><a href="#" className="footer-section-link">Nosotros</a></li>
-              <li><a href="#" className="footer-section-link">Tiendas</a></li>
-              <li><a href="#" className="footer-section-link">Contacto</a></li>
+              <li><Link to="/nosotros" className="footer-section-link">Nosotros</Link></li>
+              <li><Link to="/tiendas" className="footer-section-link">Tiendas</Link></li>
+              <li><Link to="/contacto" className="footer-section-link">Contacto</Link></li>
             </ul>
           </div>
 
@@ -56,10 +56,10 @@ export default function Footer() {
           <div className="footer-section">
             <h3 className="footer-section-title">Soporte</h3>
             <ul className="footer-section-list">
-              <li><a href="#" className="footer-section-link">Envíos</a></li>
-              <li><a href="#" className="footer-section-link">Garantías</a></li>
-              <li><a href="#" className="footer-section-link">Términos</a></li>
-              <li><a href="#" className="footer-section-link">Privacidad</a></li>
+              <li><Link to="/envios" className="footer-section-link">Envíos</Link></li>
+              <li><Link to="/garantias" className="footer-section-link">Garantías</Link></li>
+              <li><Link to="/terminos" className="footer-section-link">Términos</Link></li>
+              <li><Link to="/privacidad" className="footer-section-link">Privacidad</Link></li>
             </ul>
           </div>
 
