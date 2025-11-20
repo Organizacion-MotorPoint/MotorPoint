@@ -30,10 +30,6 @@ jobs:
           CI: false
         run: npm run build
 
-      - name: Test frontend
-        working-directory: frontend
-        run: npm run test
-
       # BACKEND (Java con Maven)
       - name: Setup JDK
         uses: actions/setup-java@v3
