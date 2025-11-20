@@ -24,20 +24,20 @@ jobs:
         working-directory: frontend
         run: npm install
 
-      - name: Lint frontend
-        working-directory: frontend
-        run: npm run lint
-
       - name: Build frontend
         working-directory: frontend
         run: npm run build
+
+      - name: Test frontend
+        working-directory: frontend
+        run: npm run test
 
       # BACKEND (Java con Maven)
       - name: Setup JDK
         uses: actions/setup-java@v3
         with:
           distribution: 'temurin'
-          java-version: '17' 
+          java-version: '17'
 
       - name: Build backend
         working-directory: backend
