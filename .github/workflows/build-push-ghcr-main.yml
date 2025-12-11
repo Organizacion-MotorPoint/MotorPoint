@@ -1,0 +1,76 @@
+name: Build & Publish (Production)
+
+on:
+  push:
+    branches: [ "main" ]
+
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+
+      - name: Log in to GHCR
+        uses: docker/login-action@v2
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+          # Si GITHUB_TOKEN da error, usar un PAT (GHCR_PAT)
+
+      # ============================
+      # BACKEND (Spring Boot)
+      # ============================
+      - name: Build & push backend (prod)
+        uses: docker/build-push-action@v4
+        with:
+          context: ./backend
+          file: ./backend/Dockerfile
+          push: true
+          tags: |
+            ghcr.io/${{ github.repository_owner }}/motorpoint-backend:latest
+            ghcr.io/${{ github.repository_owner }}/motorpoint-backend:prod
+            ghcr.io/${{ github.repository_owner }}/motorpoint-backend:${{ github.sha }}
+
+      # ============================
+      # FRONTEND (React)
+      # ============================
+      - name: Build & push frontend (prod)
+        uses: docker/build-push-action@v4
+        with:
+          context: ./frontend
+          file: ./frontend/Dockerfile
+          push: true
+          tags: |
+            ghcr.io/${{ github.repository_owner }}/motorpoint-frontend:latest
+            ghcr.io/${{ github.repository_owner }}/motorpoint-frontend:prod
+            ghcr.io/${{ github.repository_owner }}/motorpoint-frontend:${{ github.sha }}
+
+      # ============================
+      # AUTOMATIC REDEPLOY (Optional)
+      # ============================
+      # Solo si quieres redeploy automático en Railway PROD.
+      # Para habilitarlo:
+      # 1. Crea el secret RAILWAY_PROD_TOKEN
+      # 2. Reemplaza SERVICE_ID con el del backend y frontend
+      #
+      # - name: Install Railway CLI
+      #   run: curl -sSL https://raw.githubusercontent.com/railwayapp/cli/master/install.sh | sh
+
+      # - name: Redeploy Backend PROD
+      #   env:
+      #     RAILWAY_TOKEN: ${{ secrets.RAILWAY_PROD_TOKEN }}
+      #   run: railway redeploy --service <BACKEND_SERVICE_ID>
+
+      # - name: Redeploy Frontend PROD
+      #   env:
+      #     RAILWAY_TOKEN: ${{ secrets.RAILWAY_PROD_TOKEN }}
+      #   run: railway redeploy --service <FRONTEND_SERVICE_ID>
