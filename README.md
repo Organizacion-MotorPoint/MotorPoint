@@ -324,9 +324,66 @@ git reflog
 
 
 
+### **12. Despliegue**
 
+- Desplegamos una base de datos.
+
+<img width="431" height="270" alt="image" src="https://github.com/user-attachments/assets/85127cdc-04ac-4f13-869b-c245d38bd567" />
+
+- Esperamos a que termine de cargar el deploy.
+  
+<img width="830" height="402" alt="image" src="https://github.com/user-attachments/assets/cc464691-bf95-4041-bcc3-cedf7b0c8a3b" />
+
+- Copiamos las variables necesarias para nuestro backend, como: URL, CONTRASEÑA , USUARIO.
+
+<img width="657" height="314" alt="image" src="https://github.com/user-attachments/assets/c4fc2c02-0130-4bbb-9126-8a824c749dc5" />
+
+- Traemos el contenido del repositorio.
+  
+<img width="683" height="322" alt="image" src="https://github.com/user-attachments/assets/4b49b523-1d3c-4925-8ea8-f12f97aee4d4" />
 
   
+- Como nuestro repositorio contiene tanto frontend y backend elegimos la ruta para poder desplegar el backend con “/backend”.
+  
+<img width="887" height="421" alt="image" src="https://github.com/user-attachments/assets/4af73a6e-3d3e-4feb-9679-ae768abe3244" />
+
+  
+- Una vez terminado, colocamos las variables para que se pueda iniciar el deploy con el backend.
+  
+<img width="904" height="375" alt="image" src="https://github.com/user-attachments/assets/47a9c5c6-0260-427d-b54d-5f9ea3340faf" />
+
+  
+- Con eso estaría conectado el backend con la base de datos.
+
+<img width="855" height="394" alt="image" src="https://github.com/user-attachments/assets/0e053b77-633e-4175-824e-a5bd136988b1" />
+
+  
+- Para poder realizar consultas le generamos un dominio.
+
+<img width="798" height="631" alt="image" src="https://github.com/user-attachments/assets/3082e3e3-299c-4d65-a081-6c07152c3bae" />
+
+  
+- Repetimos el paso anterior para seguir con el frontend.
+  
+<img width="688" height="327" alt="image" src="https://github.com/user-attachments/assets/8809e013-ee24-4d1c-abcd-6875b305dcd4" />
+
+<img width="1120" height="470" alt="image" src="https://github.com/user-attachments/assets/30278123-3295-47fb-8b6d-01fad70ddec6" />
+
+  
+- Colocamos los comandos necesarios para instalar las dependencias y cargar el build.
+
+<img width="828" height="159" alt="image" src="https://github.com/user-attachments/assets/fac6ef0d-299e-4d7d-a156-3c278d4967f2" />
+
+  
+- Comando para iniciar el proyecto:
+
+<img width="849" height="302" alt="image" src="https://github.com/user-attachments/assets/e0af1cdd-f5da-4998-88b1-9271c7b4401a" />
+
+  
+- Comando para hacerlo público:
+  
+<img width="773" height="332" alt="image" src="https://github.com/user-attachments/assets/7f79beb1-86c9-4963-b362-19d716b35d17" />
 
 
+### **13. Despliegue con la ejecución de los contenedores**
 
