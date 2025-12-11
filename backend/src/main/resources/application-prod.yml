@@ -1,36 +1,25 @@
-server:
-  port: ${PORT:8080}
-
+# Configuración para ambiente de PRODUCCIÓN
 spring:
   datasource:
-    url: ${DATABASE_URL}
+    url: jdbc:mysql://${DB_HOST}:${DB_PORT}/${DB_NAME}?useSSL=true&allowPublicKeyRetrieval=false&serverTimezone=${DB_TIMEZONE:America/Lima}
     username: ${DB_USERNAME}
     password: ${DB_PASSWORD}
 
   jpa:
     hibernate:
+      # validate: no modifica la base de datos, solo valida el esquema
       ddl-auto: validate
     show-sql: false
 
 jwt:
   secret: ${JWT_SECRET}
-  expiration: 3600000
+  expiration: ${JWT_EXPIRATION:3600000}
 
-paypal:
-  mode: live
-  api-url: https://api-m.paypal.com
+cors:
+  allowed-origins: ${CORS_ALLOWED_ORIGINS}
 
 logging:
   level:
-    root: INFO
-    com.motorpoint: INFO
-    org.springframework: WARN
-
-cors:
-  allowed-origins: ${CORS_ORIGINS}
-
-management:
-  endpoints:
-    web:
-      exposure:
-        include: health, info
+    root: WARN
+    '[org.springframework]': WARN
+    '[com.motorpoint]': INFO
