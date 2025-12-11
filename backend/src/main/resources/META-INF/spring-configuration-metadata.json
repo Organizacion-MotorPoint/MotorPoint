@@ -1,0 +1,100 @@
+{
+  "groups": [
+    {
+      "name": "jwt",
+      "type": "java.lang.Object",
+      "description": "Configuración de JWT (JSON Web Token) para autenticación y autorización."
+    },
+    {
+      "name": "cors",
+      "type": "java.lang.Object",
+      "description": "Configuración de CORS (Cross-Origin Resource Sharing) para control de acceso desde diferentes orígenes."
+    }
+  ],
+  "properties": [
+    {
+      "name": "jwt.secret",
+      "type": "java.lang.String",
+      "description": "Clave secreta utilizada para firmar y verificar los tokens JWT. IMPORTANTE: Debe ser cambiada en producción y mantenida como variable de entorno segura.",
+      "defaultValue": "mySecretKeyForMotorPointBackend2024"
+    },
+    {
+      "name": "jwt.expiration",
+      "type": "java.lang.Long",
+      "description": "Tiempo de expiración del token JWT en milisegundos. Por defecto 24 horas (86400000 ms).",
+      "defaultValue": 86400000
+    },
+    {
+      "name": "cors.allowed-origins",
+      "type": "java.lang.String",
+      "description": "Lista de orígenes permitidos para realizar peticiones CORS al backend. Separados por coma. Ejemplos: http://localhost:3000, https://miapp.com",
+      "defaultValue": "http://localhost:3000"
+    },
+    {
+      "name": "cors.allowed-methods",
+      "type": "java.lang.String",
+      "description": "Métodos HTTP permitidos para peticiones CORS. Separados por coma.",
+      "defaultValue": "GET,POST,PUT,DELETE,OPTIONS"
+    },
+    {
+      "name": "cors.allowed-headers",
+      "type": "java.lang.String",
+      "description": "Headers HTTP permitidos en las peticiones CORS. Usar '*' para permitir todos los headers.",
+      "defaultValue": "*"
+    },
+    {
+      "name": "cors.allow-credentials",
+      "type": "java.lang.Boolean",
+      "description": "Permitir el envío de credenciales (cookies, authorization headers, certificados TLS) en peticiones CORS.",
+      "defaultValue": true
+    }
+  ],
+  "hints": [
+    {
+      "name": "cors.allowed-methods",
+      "values": [
+        {
+          "value": "GET",
+          "description": "Método HTTP GET para obtener recursos"
+        },
+        {
+          "value": "POST",
+          "description": "Método HTTP POST para crear recursos"
+        },
+        {
+          "value": "PUT",
+          "description": "Método HTTP PUT para actualizar recursos"
+        },
+        {
+          "value": "DELETE",
+          "description": "Método HTTP DELETE para eliminar recursos"
+        },
+        {
+          "value": "OPTIONS",
+          "description": "Método HTTP OPTIONS para preflight CORS"
+        },
+        {
+          "value": "PATCH",
+          "description": "Método HTTP PATCH para actualizar parcialmente recursos"
+        },
+        {
+          "value": "HEAD",
+          "description": "Método HTTP HEAD para obtener headers sin body"
+        }
+      ]
+    },
+    {
+      "name": "cors.allow-credentials",
+      "values": [
+        {
+          "value": "true",
+          "description": "Permite credenciales en peticiones CORS"
+        },
+        {
+          "value": "false",
+          "description": "No permite credenciales en peticiones CORS"
+        }
+      ]
+    }
+  ]
+}
