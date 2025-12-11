@@ -1,7 +1,7 @@
 # Configuración para ambiente de PRODUCCIÓN
 spring:
   datasource:
-    url: ${DATABASE_URL}
+    url: jdbc:mysql://${DB_HOST}:${DB_PORT}/${DB_NAME}?useSSL=true&allowPublicKeyRetrieval=false&serverTimezone=${DB_TIMEZONE:America/Lima}
     username: ${DB_USERNAME}
     password: ${DB_PASSWORD}
 
