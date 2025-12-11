@@ -38,5 +38,5 @@ cors:
 
 logging:
   level:
-    org.springframework: INFO
-    com.motorpoint: DEBUG
+    '[org.springframework]': INFO
+    '[com.motorpoint]': DEBUG
