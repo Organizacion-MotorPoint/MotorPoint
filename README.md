@@ -98,6 +98,44 @@ npm install
 npm start
 ```
 
+### **6. Pruebas locales con Docker Compose**
+- Requisitos: Docker y Docker Compose.
+- Crea tus archivos de entorno (no se suben):
+   - Copia [backend/.env.example](backend/.env.example) a `backend/.env` y ajusta credenciales (usa un usuario no root y contraseña).
+   - Copia [frontend/.env.example](frontend/.env.example) a `frontend/.env` y ajusta `REACT_APP_API_URL` si es necesario.
+- Levantar backend + base de datos:
+```bash
+docker-compose --env-file backend/.env up -d backend mysql
+```
+- Levantar frontend:
+```bash
+docker-compose --env-file backend/.env up -d frontend
+```
+- Ver contenedores:
+```bash
+docker ps
+```
+- Detener y limpiar:
+```bash
+docker-compose down -v
+```
+Notas:
+- `DB_USERNAME/DB_PASSWORD` no deben estar vacíos; evita usar root para la app.
+- El backend queda en http://localhost:8080 y el frontend en http://localhost:3000.
+
+#### Ver la base de datos
+- Desde el contenedor:
+```bash
+docker exec -it motorpoint-db mysql -u $DB_USERNAME -p$DB_PASSWORD $DB_NAME
+```
+- Con cliente local (MySQL Workbench/CLI):
+   - Host: 127.0.0.1
+   - Puerto: 3306
+   - Usuario: el definido en backend/.env
+   - Password: la definida en backend/.env
+   - Base: la definida en backend/.env
+   (En Workbench crea una conexión con esos datos.)
+
 ---
 ## 📋 Roles
 | *Nombre*          | *Rol*                                     | *Funciones principales* |
