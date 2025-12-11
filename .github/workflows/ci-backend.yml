@@ -1,0 +1,39 @@
+name: CI - Backend
+
+on:
+  push:
+    branches: [main, develop]
+    paths:
+      - 'backend/**'
+      - '.github/workflows/ci-backend.yml'
+  pull_request:
+    branches: [main, develop]
+    paths:
+      - 'backend/**'
+      - '.github/workflows/ci-backend.yml'
+
+jobs:
+  ci-backend:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Setup JDK
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Grant execute permission for mvnw
+        working-directory: backend
+        run: chmod +x mvnw
+
+      - name: Build backend
+        working-directory: backend
+        run: ./mvnw clean install
+
+      - name: Run backend tests
+        working-directory: backend
+        run: ./mvnw test
