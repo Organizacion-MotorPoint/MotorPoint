@@ -8,12 +8,18 @@ permissions:
   contents: read
   packages: write
 
+env:
+  IMAGE_REGISTRY: ghcr.io
+
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v4
+
+      - name: Set lowercase owner
+        run: echo "IMAGE_OWNER=$(echo ${{ github.repository_owner }} | tr '[:upper:]' '[:lower:]')" >> $GITHUB_ENV
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
@@ -36,9 +42,9 @@ jobs:
           file: ./backend/Dockerfile
           push: true
           tags: |
-            ghcr.io/${{ github.repository_owner }}/motorpoint-backend:latest
-            ghcr.io/${{ github.repository_owner }}/motorpoint-backend:prod
-            ghcr.io/${{ github.repository_owner }}/motorpoint-backend:${{ github.sha }}
+            ${{ env.IMAGE_REGISTRY }}/${{ env.IMAGE_OWNER }}/motorpoint-backend:latest
+            ${{ env.IMAGE_REGISTRY }}/${{ env.IMAGE_OWNER }}/motorpoint-backend:prod
+            ${{ env.IMAGE_REGISTRY }}/${{ env.IMAGE_OWNER }}/motorpoint-backend:${{ github.sha }}
 
       # ============================
       # FRONTEND (React)
@@ -50,9 +56,9 @@ jobs:
           file: ./frontend/Dockerfile
           push: true
           tags: |
-            ghcr.io/${{ github.repository_owner }}/motorpoint-frontend:latest
-            ghcr.io/${{ github.repository_owner }}/motorpoint-frontend:prod
-            ghcr.io/${{ github.repository_owner }}/motorpoint-frontend:${{ github.sha }}
+            ${{ env.IMAGE_REGISTRY }}/${{ env.IMAGE_OWNER }}/motorpoint-frontend:latest
+            ${{ env.IMAGE_REGISTRY }}/${{ env.IMAGE_OWNER }}/motorpoint-frontend:prod
+            ${{ env.IMAGE_REGISTRY }}/${{ env.IMAGE_OWNER }}/motorpoint-frontend:${{ github.sha }}
 
       # ============================
       # AUTOMATIC REDEPLOY (Optional)
