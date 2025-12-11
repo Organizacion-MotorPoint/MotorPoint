@@ -8,6 +8,10 @@ permissions:
   contents: read
   packages: write
 
+env:
+  IMAGE_REGISTRY: ghcr.io
+  IMAGE_OWNER: ${{ toLower(github.repository_owner) }}
+
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
@@ -36,9 +40,9 @@ jobs:
           file: ./backend/Dockerfile
           push: true
           tags: |
-            ghcr.io/${{ github.repository_owner }}/motorpoint-backend:latest
-            ghcr.io/${{ github.repository_owner }}/motorpoint-backend:prod
-            ghcr.io/${{ github.repository_owner }}/motorpoint-backend:${{ github.sha }}
+            ${{ env.IMAGE_REGISTRY }}/${{ env.IMAGE_OWNER }}/motorpoint-backend:latest
+            ${{ env.IMAGE_REGISTRY }}/${{ env.IMAGE_OWNER }}/motorpoint-backend:prod
+            ${{ env.IMAGE_REGISTRY }}/${{ env.IMAGE_OWNER }}/motorpoint-backend:${{ github.sha }}
 
       # ============================
       # FRONTEND (React)
@@ -50,9 +54,9 @@ jobs:
           file: ./frontend/Dockerfile
           push: true
           tags: |
-            ghcr.io/${{ github.repository_owner }}/motorpoint-frontend:latest
-            ghcr.io/${{ github.repository_owner }}/motorpoint-frontend:prod
-            ghcr.io/${{ github.repository_owner }}/motorpoint-frontend:${{ github.sha }}
+            ${{ env.IMAGE_REGISTRY }}/${{ env.IMAGE_OWNER }}/motorpoint-frontend:latest
+            ${{ env.IMAGE_REGISTRY }}/${{ env.IMAGE_OWNER }}/motorpoint-frontend:prod
+            ${{ env.IMAGE_REGISTRY }}/${{ env.IMAGE_OWNER }}/motorpoint-frontend:${{ github.sha }}
 
       # ============================
       # AUTOMATIC REDEPLOY (Optional)
