@@ -29,8 +29,8 @@ jobs:
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-          # Si GITHUB_TOKEN da error, usar un PAT (GHCR_PAT)
+          password: ${{ secrets.TOKEN_CD }}
+          # Si TOKEN_CD da error, usar un PAT (GHCR_PAT)
 
       # ============================
       # BACKEND (Spring Boot)
