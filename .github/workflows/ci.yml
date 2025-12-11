@@ -2,9 +2,9 @@ name: CI - MotorPoint
 
 on:
   push:
-    branches: [main, dev, ci/workflows]
+    branches: [main, develop]
   pull_request:
-    branches: [main, dev]
+    branches: [main, develop]
 
 jobs:
   ci:
